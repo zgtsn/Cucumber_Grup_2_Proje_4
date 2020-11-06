@@ -27,7 +27,7 @@ public class _Parent {
     }
     public void clickFunction(WebElement element) {
         waitUntilClickable(element);// eleman clikable olana kadar bekle
-//        scrollToElement(element); // eleman kadar scroll yap
+        scrollToElement(element); // eleman kadar scroll yap
         element.click();// click yap
     }
 

@@ -58,6 +58,22 @@ public class TemplateContent extends _Parent{
     @FindBy(css = "div[role=alertdialog]")
     private WebElement alertdialog;
 
+    @FindBy(xpath = "//span[text()='Human Resources']")
+    private WebElement humanResources;
+
+    @FindBy(xpath = "(//span[text()='Setup'])[3]")
+    private WebElement hrSetUp;
+
+    @FindBy(xpath = "//span[text()='Position Salary']")
+    private WebElement hrPositionSalary;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='title']/input")
+    private WebElement salaryName;
+
+    @FindBy(xpath = "(//ms-delete-button[@class=\"ng-star-inserted\"])[1]")
+    private WebElement salaryDelete;
+
+
     @FindAll({
             @FindBy(xpath = "//div[@id='toast-container']")
     })
@@ -181,10 +197,24 @@ public class TemplateContent extends _Parent{
                 myElement = msjContainer;
                 break;
 
-            case "errorMessage":
-                myElement = errorMessage;
+            case "humanResources":
+                myElement = humanResources;
                 break;
+            case "hrSetUp":
+                myElement = hrSetUp;
+                break;
+            case "hrPositionSalary":
+                myElement = hrPositionSalary;
+                break;
+            case "salaryName":
+                myElement = salaryName;
+                break;
+            case "salaryDelete":
+                myElement = salaryDelete;
+                break;
+
         }
+        beklet(250);
         return myElement;
     }
     /**
@@ -300,10 +330,12 @@ public class TemplateContent extends _Parent{
         // invisible olma beklemesini, display ise şartına bağladık, yani
         // gözüküyorsa kaybolana kadar bekle.
 
-        if (msjContainers.size()>0) {
-            if (msjContainer.isDisplayed())
-                wait.until(ExpectedConditions.invisibilityOfAllElements(msjContainer));
-        }
+//        if (msjContainers.size()>0) {
+//            if (msjContainer.isDisplayed())
+//                wait.until(ExpectedConditions.invisibilityOfAllElements(msjContainer));
+//        }
+        beklet(500);
+
         if (editOrDelete.equalsIgnoreCase("delete")) {
             btnList = waitVisibleListAllElement(deleteButtonList);
         } else btnList = waitVisibleListAllElement(editButtonList);
